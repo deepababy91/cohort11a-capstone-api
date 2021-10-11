@@ -37,6 +37,7 @@ app.use('/api/v1', passport.authenticate('jwt', { session: false }),  apiRouter)
 app.use(function(req, res, next) {
   next(createError(404));
 });
+app.set('port', process.env.PORT || 3000);
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -48,8 +49,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-app.listen(process.env.PORT||PORT,()=>{
-  console.log(`Server running on PORT ${PORT}`);
-})
+
 
 module.exports = app;
