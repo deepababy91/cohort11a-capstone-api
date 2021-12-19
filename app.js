@@ -49,6 +49,10 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+let port=process.env.PORT || 3000;
+app.listen(port, ()=>{
+  console.log(`App is running at the port ${port}`)
+})
 
 
 module.exports = app;
