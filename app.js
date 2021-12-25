@@ -50,9 +50,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 if(process.env.NODE_ENV==='production'){
-  app.use(express.static('C:\WorkspaceVS\cohort11a-capstone-web/build'));
+  app.use(express.static(path.join('client/build')));
   app.get('*', (req,res)=>{
-    res.sendFile(path.join(_dirname,'C:\WorkspaceVS\cohort11a-capstone-web','build','index.html'));//relative apth
+    res.sendFile(path.join(__dirname,'client/build','index.html'));//relative apth
   })
 }
 //let port=process.env.PORT;
