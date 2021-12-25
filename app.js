@@ -47,6 +47,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+if(process.env.NODE_ENV==='production'){
+  app.use(express.static('C:\WorkspaceVS\cohort11a-capstone-web/build'));
+  app.get('*', (req,res)=>{
+    res.sendFile(path.join(_dirname,'C:\WorkspaceVS\cohort11a-capstone-web','build','index.html'));//relative apth
+  })
+}
 let port=process.env.PORT || 3000;
 app.listen(port, ()=>{
   console.log(`App is running at the port ${port}`)
